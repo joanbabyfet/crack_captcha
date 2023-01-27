@@ -57,8 +57,6 @@ def main():
 
             if resp.text.find('OK') > -1:
                 captcha_text = resp.text.split('|')[1] # 获取辨识结果
-                print('辨识结果:', captcha_text)
-
                 el_username = browser.find_element(By.ID, 'login_id')
                 el_password = browser.find_element(By.ID, 'login_pswd')
                 el_captcha = browser.find_element(By.ID, 'captcha')
@@ -74,6 +72,7 @@ def main():
             print('获取验证码错误')
     else:
         print('提交验证码错误')
+    browser.close() # 关闭当前tab选项卡, quit关闭整个浏览器
 
 if __name__ == '__main__':
     main()
